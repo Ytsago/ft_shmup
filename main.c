@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 14:01:13 by secros            #+#    #+#             */
-/*   Updated: 2024/11/23 20:12:32 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/23 21:08:26 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 void	shooting(t_data *data, int me)
 {
 	t_pos *bullet = malloc(sizeof(t_pos));
+	if (!bullet)
+		return;
 	if (me)
 	{
-		bullet->x = data->player->x;
+		bullet->x = data->player->x+1;
 		bullet->y = data->player->y;
 		lstadd_front(&data->shoot, bullet);
 	}
@@ -31,7 +33,7 @@ int main()
 	noecho();
 	curs_set(FALSE);
 	keypad(stdscr, true);
-	timeout(25);
+	timeout(1);
 
 	t_pos	player;
 	player.x = 5;
@@ -50,7 +52,6 @@ int main()
 	box(game_win, 0, 0);
 	while (1)
 	{
-		display_win(game_win, background, &data);
 		data.back_off = (data.back_off +1) % 23;
 		input = getch();
 		if (input == 'w' && data.player->y > 3)
@@ -62,10 +63,9 @@ int main()
 		if (input == 'a'&& data.player->x > 2)
 			data.player->x--;
 		if (input == ' ')
-		{
 			shooting(&data, 1);
-		}
-		napms(2);
+		display_win(game_win, background, &data);
+		napms(25);
 	}
 	
 	endwin();

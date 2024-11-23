@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:47:29 by secros            #+#    #+#             */
-/*   Updated: 2024/11/23 20:10:33 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/23 21:01:08 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_data
 	int		score;
 	t_pos	*player;
 	t_pos	*shoot;
+	t_pos	*enemy;
 } 			t_data;
 
 void	display_shoot(WINDOW *win, t_pos **shoot);
