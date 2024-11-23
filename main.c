@@ -6,89 +6,11 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 14:01:13 by secros            #+#    #+#             */
-/*   Updated: 2024/11/23 19:29:40 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/23 20:12:32 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <ncurses.h>
-#include <time.h>
-
-
-typedef struct s_pos
-{
-	int				x;
-	int				y;
-	struct s_pos	*next;
-} 					t_pos;
-
-typedef struct s_data
-{
-	int		back_off;
-	int		score;
-	t_pos	*player;
-	t_pos	*shoot;
-} 			t_data;
-
-void	display_shoot(WINDOW *win, t_pos **shoot)
-{
-	t_pos *bull = *shoot;
-	t_pos *prev = NULL;
-	t_pos *freeing;
-
-	while (bull)
-	{
-		mvwaddch(win, bull->y, bull->x++, '-');
-		if (bull->x == getmaxx(win) - 1)
-		{
-			freeing = bull;
-			if (prev)
-				prev->next = bull->next;
-			else
-				*shoot = bull->next;
-			bull = bull->next;
-			free(freeing);
-		}
-		else
-		{
-			prev = bull;
-			bull = bull->next;
-		}
-	}
-}
-
-void	display_win(WINDOW *win, const char back[23], t_data *data)
-{
-	int patern = 0;
-	int x = 1;
-	int line;
-	char player = '>';
-	
-	werase(win);
-	box(win, 0, 0);
-	mvwprintw(win, 1, 1, "Score %d", data->score);
-	while (x < getmaxx(win) - 1)
-	{
-		patern = (data->back_off + x) % 22;
-		mvwaddch(win, getmaxy(win) - 2, x, back[patern]);
-		mvwaddch(win, 2, x, back[patern]);
-		x++;
-		mvwaddch(win, data->player->y, data->player->x - 1, player);
-	}
-	display_shoot(win, &data->shoot);
-	wrefresh(win);
-}
-
-void	lstadd_front(t_pos **shoot, t_pos *new)
-{
-	if (!*shoot)
-		*shoot = new;
-	else
-	{
-		new->next = *shoot;
-		*shoot = new;
-	}
-}
+#include "ft_shmup.h"
 
 void	shooting(t_data *data, int me)
 {
