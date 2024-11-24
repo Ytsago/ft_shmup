@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:47:29 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 19:52:09 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 20:05:39 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@
 
 # define PLAYER_S {"  -=:|\\", "-=:{[@]}=>", "  -=:|/", NULL}
 # define ENEMY_1 "<o>"
-// # define ENEMY_2 {"/|:", "\\|:", NULL}
-# define ENEMY_2 "/|:\n\\|:"
-// # define ENEMY_3 {"<|\\-", "<|/-", NULL}
-# define ENEMY_3 "<|\\-\n<|/-"
 # define BACK "*      .      +       "
 
 typedef struct s_pos
