@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:47:18 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 20:52:52 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 21:15:21 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,6 @@ void	display_background(WINDOW *win, t_data *data)
 	static int back_size = 0;
 	const char back[] = BACK;
 	int x = 1;
-	int line;
 
 	if (!back_size)
 		back_size = ft_strlen(BACK);
