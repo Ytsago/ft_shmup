@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:47:18 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 23:07:00 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 23:11:13 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	display_shoot(WINDOW *win, t_bullet **shoot)
 		if (bull->origin)
 			mvwaddch(win, bull->pos.y, bull->pos.x++, 'o');
 		else
-			mvwaddch(win, bull->pos.y, bull->pos.x--, 'o');
+			mvwaddch(win, bull->pos.y, bull->pos.x--, '+');
 		if (bull->pos.x == getmaxx(win) - 2 || (bull->life <= 0) || bull->pos.x <= 1)
 		{
 			pt = bull;
