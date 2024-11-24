@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:47:18 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 23:11:13 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 23:12:21 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	display_type(WINDOW *win, t_entity *current, t_data *data)
             current->wait_time--;
 			if (current->wait_time < 0)
 			{
-				current->wait_time = 15;
+				current->wait_time = 25;
 				shooting(current->pos, 0, data);
 			}
         }

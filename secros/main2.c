@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 14:01:13 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 23:07:41 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 23:12:34 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ void	engine(t_data *data, WINDOW *win)
 		napms(25);
 		first_wave(data, wait++);
 		collisions(data);
-		if (wait > 500)
+		if (wait > 1000)
 			wait = 0;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 17:10:28 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 23:05:29 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 23:13:19 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	*first_wave(t_data *data, int wait)
 	size_t	i = 0;
 	void *pt = NULL;
 
-	while (i < 6 && wait == 100)
+	while (i < 6 && wait == 150)
 	{
 		lstadd_front_enti(&data->enemy, enemy_spawner(7 + i, data->window.sizex - 2, 1));
 		lstadd_front_enti(&data->enemy, enemy_spawner(20 + i, data->window.sizex - 2, 1));
@@ -54,13 +54,13 @@ void	*first_wave(t_data *data, int wait)
 		i += 2;
 	}
 	wait++;
-	while (i < 2 && wait == 250)
+	while (i < 2 && wait == 400)
 	{
 		lstadd_front_enti(&data->enemy, enemy_spawner(16 + i, data->window.sizex - 2, 3));
 		lstadd_front_enti(&data->enemy, enemy_spawner(26 + i, data->window.sizex - 2, 3));
 		i++;
 	}
-	while (i < 2 && wait == 350)
+	while (i < 2 && wait == 600)
 	{
 		lstadd_front_enti(&data->enemy, enemy_spawner(7 + i, data->window.sizex - 2, 2));
 		lstadd_front_enti(&data->enemy, enemy_spawner(20 + i, data->window.sizex - 2, 2));
