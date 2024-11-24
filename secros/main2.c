@@ -6,13 +6,13 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 14:01:13 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 22:43:16 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 22:59:39 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_shmup.h"
 
-void	shooting(t_data *data, int me)
+void	shooting(t_pos pos, int me, t_data *data)
 {
 	t_bullet *bullet = malloc(sizeof(t_bullet));
 	static int flipflop = -1;
@@ -20,12 +20,19 @@ void	shooting(t_data *data, int me)
 		return;
 	if (me)
 	{
-		bullet->pos.x = data->player.pos.x + 5;
-		bullet->pos.y = data->player.pos.y + flipflop;
-		bullet->origin = me;
+		bullet->pos.x = pos.x + 5;
+		bullet->pos.y = pos.y + flipflop;
+		bullet->origin = 1;
+		bullet->life = 1;
+		flipflop *= -1;
+	}
+	else
+	{
+		bullet->pos.x = pos.x + 5;
+		bullet->pos.y = pos.y;
+		bullet->origin = 0;
 		bullet->life = 1;
 		lstadd_front(&data->shoot, bullet);
-		flipflop *= -1;
 	}
 }
 
