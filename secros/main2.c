@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 14:01:13 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 17:25:57 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 18:51:40 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void	engine(t_data *data, WINDOW *win)
 			break;
 		display_win(win, data);
 		napms(25);
-		if (data->enemy = NULL)
-			enemy_spawner(data);
+	//	if (data->enemy = NULL)
+	//		enemy_spawner(data);
 	}
 }
 

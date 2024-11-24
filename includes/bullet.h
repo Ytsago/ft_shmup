@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bullet.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 22:59:38 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/24 05:52:35 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 18:35:06 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ typedef enum e_shooter
 
 typedef struct s_bullet
 {
-	t_vector	pos;
-	t_vector	velosity;
+	t_vec	pos;
+	t_vec	velosity;
 	t_shooter	shooter;
 }	t_bullet;
 
