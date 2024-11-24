@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:47:18 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 18:54:11 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 19:53:15 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,67 @@ void	display_shoot(WINDOW *win, t_bullet **shoot)
 		{
 			prev = bull;
 			bull = bull->next;
+		}
+	}
+}
+
+void	display_type(WINDOW *win, t_entity *current)
+{
+	if (current->wait_time == 0 && current->class == 1)
+	{
+		mvwaddstr(win, current->pos.y, current->pos.x--, ENEMY_1);
+		current->wait_time = 5;
+	}
+	else if (current->class == 1)
+	{
+		mvwaddstr(win, current->pos.y, current->pos.x, ENEMY_1);
+		current->wait_time--;
+	}
+	if (current->wait_time == 0 && current->class == 2)
+	{
+		mvwaddstr(win, current->pos.y, current->pos.x--, ENEMY_2);
+		current->wait_time = 10;
+	}
+	else if (current->class == 2)
+	{
+		mvwaddstr(win, current->pos.y, current->pos.x, ENEMY_2);
+		current->wait_time--;
+	}
+	if (current->wait_time == 0 && current->class == 3)
+	{
+		mvwaddstr(win, current->pos.y, current->pos.x--, ENEMY_3);
+		current->wait_time = 8;
+	}
+	else if (current->class == 3)
+	{
+		mvwaddstr(win, current->pos.y, current->pos.x, ENEMY_3);
+		current->wait_time--;
+	}
+}
+
+void	display_enemy(WINDOW *win, t_entity **enemy)
+{
+	t_entity *current = *enemy;
+	t_entity *prev = NULL;
+	void *pt;
+
+	while (current)
+	{
+		display_type(win, current);
+		if (current->pos.x == 1)
+		{
+			pt = current;
+			if (prev)
+				prev->next = NULL;
+			else
+				*enemy = NULL;
+			current = NULL;
+			free(pt);
+		}
+		else
+		{
+			prev = current;
+			current = current->next;
 		}
 	}
 }
@@ -74,6 +135,7 @@ void	display_win(WINDOW *win, t_data *data)
 	mvwprintw(win, 1, 1, "Score %d", data->score);
 	display_background(win, data);
 	display_player(win, data);
+	display_enemy(win, &data->enemy);
 	display_shoot(win, &data->shoot);
 	wrefresh(win);
 }

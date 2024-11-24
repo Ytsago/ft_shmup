@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:47:29 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 18:51:12 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 19:52:09 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 #include <ncurses.h>
 
 # define PLAYER_S {"  -=:|\\", "-=:{[@]}=>", "  -=:|/", NULL}
-# define ENEMY_1 {"/|:", "\\|:", NULL}
-# define ENEMY_2 {"<o>", NULL}
-# define ENEMY_3 {"<|\\-", "<|/-", NULL}
+# define ENEMY_1 "<o>"
+// # define ENEMY_2 {"/|:", "\\|:", NULL}
+# define ENEMY_2 "/|:\n\\|:"
+// # define ENEMY_3 {"<|\\-", "<|/-", NULL}
+# define ENEMY_3 "<|\\-\n<|/-"
 # define BACK "*      .      +       "
 
 typedef struct s_pos
@@ -40,6 +42,7 @@ typedef struct 		s_entity
 	t_pos			pos;
 	int				class;
 	int				life;
+	int				wait_time;
 	struct s_entity *next;
 }					t_entity;
 
@@ -63,7 +66,9 @@ typedef struct s_data
 void	display_shoot(WINDOW *win, t_bullet **shoot);
 void	display_win(WINDOW *win, t_data *data);
 void	lstadd_front(t_bullet **shoot, t_bullet *new_bull);
+void	*first_wave(t_data *data, int wait);
 void	lstadd_front_enti(t_entity **enemy, t_entity *new_en);
+void	display_enemy(WINDOW *win, t_entity **enemy);
 
 size_t	ft_strlen(const char *s);
 

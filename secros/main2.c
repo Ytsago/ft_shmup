@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 14:01:13 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 18:54:46 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 19:44:58 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ int	user_input(t_data *data)
 
 void	engine(t_data *data, WINDOW *win)
 {
+	int wait = 0;
 	while (1)
 	{
 		if(user_input(data))
 			break;
 		display_win(win, data);
 		napms(25);
-	//	if (data->enemy = NULL)
-	//		enemy_spawner(data);
+		first_wave(data, wait++);
 	}
 }
 
@@ -70,11 +70,13 @@ void	data_init(WINDOW **win, t_data *data)
 
 	*win = newwin(40, 100, 5, 10);
 
-	data->player.pos.x = 5;
-	data->player.pos.y = 10;
-
 	data->window.sizex = getmaxx(*win);
 	data->window.sizey = getmaxy(*win);
+
+	data->player.pos.x = 5;
+	data->player.pos.y = data->window.sizey / 2;
+
+
 
 	data->enemy =NULL;
 	data->score = 0;

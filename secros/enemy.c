@@ -6,29 +6,66 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 17:10:28 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 18:49:48 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 19:57:52 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_shmup.h"
 
-void	*enemy_spawner(int x, int y, int class)
+t_entity	*enemy_spawner(int y, int x, int class)
 {
-	
+	t_entity	*enemy;
+
+	enemy = malloc(sizeof(t_entity));
+	if (!enemy)
+		return(NULL);
+	enemy->class = class;
+	enemy->pos.x = x;
+	enemy->pos.y = y;
+	enemy->next = NULL;
+	if(class == 1)
+	{
+		enemy->life = 1;
+		enemy->wait_time = 3;
+	}
+	if(class == 2)
+	{
+		enemy->wait_time = 8;
+		enemy->life = 7;
+	}
+	if(class == 3)
+	{
+		enemy->wait_time = 5;
+		enemy->life = 3;
+	}
+	return (enemy); 
 }
 
-void	*first_wave(t_data *data)
+void	*first_wave(t_data *data, int wait)
 {
 	size_t	i = 0;
-	static	unsigned int wait = 0;
-	void *pt = 1;
+	void *pt = NULL;
 
-	while (i < 3 && pt)
+	while (i < 6 && wait == 50)
 	{
-		pt = lstadd_front_enti(data->enemy, enemy_spawner(7 + i, data->window.sizex - 2, 1));
-		if (pt)
-			pt = lstadd_front_enti(data->enemy, enemy_spawner(12 + i, data->window.sizex - 2, 1));
-		i++;
+		lstadd_front_enti(&data->enemy, enemy_spawner(7 + i, data->window.sizex - 2, 1));
+		lstadd_front_enti(&data->enemy, enemy_spawner(20 + i, data->window.sizex - 2, 1));
+		lstadd_front_enti(&data->enemy, enemy_spawner(33 + i, data->window.sizex - 2, 1));
+		i += 2;
 	}
 	wait++;
+	while (i < 2 && wait == 100)
+	{
+		lstadd_front_enti(&data->enemy, enemy_spawner(11 + i, data->window.sizex - 2, 3));
+		lstadd_front_enti(&data->enemy, enemy_spawner(31 + i, data->window.sizex - 2, 3));
+		i++;
+	}
+	while (i < 2 && wait == 130)
+	{
+		lstadd_front_enti(&data->enemy, enemy_spawner(7 + i, data->window.sizex - 2, 2));
+		lstadd_front_enti(&data->enemy, enemy_spawner(20 + i, data->window.sizex - 2, 2));
+		lstadd_front_enti(&data->enemy, enemy_spawner(33 + i, data->window.sizex - 2 , 2));
+		i++;
+	}
+	return (pt);
 }
