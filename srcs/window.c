@@ -6,7 +6,7 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:34:21 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/24 06:10:01 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 06:24:02 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ bool	check_terminal_size(void)
 	WINDOW	*alert;
 
 	alert = enginectx.windows[ALERT_WIN];
-	wclear(alert);
+	werase(alert);
 	if ((LINES < MIN_LINES) || (COLS < MIN_COLS))
 	{
 		box(alert, 0, 0);

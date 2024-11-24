@@ -6,7 +6,7 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 03:05:17 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/24 06:03:15 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 06:23:43 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	draw_menu(void)
 	WINDOW	*win;
 
 	win = enginectx.windows[MENU_WIN];
-	wclear(win);
+	werase(win);
 	box(win, 0, 0);
 	printcenter(win, "Press 'q' to quit.");
 	wrefresh(win);
