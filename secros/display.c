@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:47:18 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 20:08:08 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 20:19:59 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,9 @@ void	display_type(WINDOW *win, t_entity *current)
 	const char	*type_2[] = {"/|:", "\\|:", NULL};
 	const char	*type_3[] = {"<|\\-", "<|/-", NULL};
 
-	int	i = 0;
+	int	i;
 
+	i = 0;
 	if (current->wait_time == 0 && current->class == 1)
 	{
 		mvwaddstr(win, current->pos.y, current->pos.x--, ENEMY_1);
@@ -56,28 +57,32 @@ void	display_type(WINDOW *win, t_entity *current)
 		mvwaddstr(win, current->pos.y, current->pos.x, ENEMY_1);
 		current->wait_time--;
 	}
-	if (current->wait_time == 0 && current->class == 2)
+	else if (current->wait_time == 0 && current->class == 2)
 	{
-		while(type_2[i])
-		mvwaddstr(win, current->pos.y +i, current->pos.x--, type_2[i++]);
-		current->wait_time = 10;
+		mvwaddstr(win, current->pos.y +i, current->pos.x--, type_2[i]);
+		i++;
+		mvwaddstr(win, current->pos.y +i, current->pos.x, type_2[i]);
+		current->wait_time = 12;
 	}
 	else if (current->class == 2)
 	{
-		while(type_2[i])
+		mvwaddstr(win, current->pos.y +i, current->pos.x, type_2[i]);
+		i++;
 		mvwaddstr(win, current->pos.y +i, current->pos.x, type_2[i]);
 		current->wait_time--;
 	}
-	if (current->wait_time == 0 && current->class == 3)
+	else if (current->wait_time == 0 && current->class == 3)
 	{
-		while(type_3[i])
 		mvwaddstr(win, current->pos.y +i, current->pos.x--, type_3[i]);
+		i++;
+		mvwaddstr(win, current->pos.y +i, current->pos.x, type_3[i]);
 		current->wait_time = 8;
 	}
 	else if (current->class == 3)
 	{
-		while(type_3[i])
-		mvwaddstr(win, current->pos.y +i, current->pos.x, type_3[i]);
+			mvwaddstr(win, current->pos.y +i, current->pos.x, type_3[i]);
+			i++;
+			mvwaddstr(win, current->pos.y +i, current->pos.x, type_3[i]);
 		current->wait_time--;
 	}
 }

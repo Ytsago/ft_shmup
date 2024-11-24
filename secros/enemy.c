@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 17:10:28 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 19:57:52 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 20:11:44 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ t_entity	*enemy_spawner(int y, int x, int class)
 	if(class == 1)
 	{
 		enemy->life = 1;
-		enemy->wait_time = 3;
+		enemy->wait_time = 5;
 	}
 	if(class == 2)
 	{
 		enemy->wait_time = 8;
-		enemy->life = 7;
+		enemy->life = 12;
 	}
 	if(class == 3)
 	{
 		enemy->wait_time = 5;
-		enemy->life = 3;
+		enemy->life = 8;
 	}
 	return (enemy); 
 }

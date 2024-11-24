@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 14:01:13 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 19:44:58 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 20:24:57 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	engine(t_data *data, WINDOW *win)
 		display_win(win, data);
 		napms(25);
 		first_wave(data, wait++);
+		if (wait > 500)
+			wait = 0;
 	}
 }
 
