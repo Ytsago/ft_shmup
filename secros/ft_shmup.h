@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:47:29 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 20:05:39 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 20:51:39 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	lstadd_front(t_bullet **shoot, t_bullet *new_bull);
 void	*first_wave(t_data *data, int wait);
 void	lstadd_front_enti(t_entity **enemy, t_entity *new_en);
 void	display_enemy(WINDOW *win, t_entity **enemy);
+void	shooting(t_data *data, int me);
 
 size_t	ft_strlen(const char *s);
 

@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:47:18 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 20:19:59 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 20:52:52 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,48 +43,63 @@ void	display_type(WINDOW *win, t_entity *current)
 {
 	const char	*type_2[] = {"/|:", "\\|:", NULL};
 	const char	*type_3[] = {"<|\\-", "<|/-", NULL};
+	int max_x = getmaxx(win);
 
 	int	i;
 
 	i = 0;
-	if (current->wait_time == 0 && current->class == 1)
-	{
-		mvwaddstr(win, current->pos.y, current->pos.x--, ENEMY_1);
-		current->wait_time = 5;
-	}
-	else if (current->class == 1)
-	{
-		mvwaddstr(win, current->pos.y, current->pos.x, ENEMY_1);
-		current->wait_time--;
-	}
-	else if (current->wait_time == 0 && current->class == 2)
-	{
-		mvwaddstr(win, current->pos.y +i, current->pos.x--, type_2[i]);
-		i++;
-		mvwaddstr(win, current->pos.y +i, current->pos.x, type_2[i]);
-		current->wait_time = 12;
-	}
-	else if (current->class == 2)
-	{
-		mvwaddstr(win, current->pos.y +i, current->pos.x, type_2[i]);
-		i++;
-		mvwaddstr(win, current->pos.y +i, current->pos.x, type_2[i]);
-		current->wait_time--;
-	}
-	else if (current->wait_time == 0 && current->class == 3)
-	{
-		mvwaddstr(win, current->pos.y +i, current->pos.x--, type_3[i]);
-		i++;
-		mvwaddstr(win, current->pos.y +i, current->pos.x, type_3[i]);
-		current->wait_time = 8;
-	}
-	else if (current->class == 3)
-	{
-			mvwaddstr(win, current->pos.y +i, current->pos.x, type_3[i]);
-			i++;
-			mvwaddstr(win, current->pos.y +i, current->pos.x, type_3[i]);
-		current->wait_time--;
-	}
+	if (current->class == 1)
+    {
+        if (current->wait_time == 0)
+        {
+            mvwaddstr(win, current->pos.y, current->pos.x--, ENEMY_1);
+            current->wait_time = 5;
+        }
+        else
+        {
+            mvwaddstr(win, current->pos.y, current->pos.x, ENEMY_1);
+            current->wait_time--;
+        }
+    }
+    else if (current->class == 2)
+    {
+        if (current->wait_time == 0)
+        {
+            mvwaddstr(win, current->pos.y, current->pos.x--, type_2[0]);
+            mvwaddstr(win, current->pos.y + 1, current->pos.x, type_2[1]);
+			mvwaddstr(win, current->pos.y + 2, current->pos.x, "      ");
+            current->wait_time = 12;
+        }
+        else
+        {
+            mvwaddstr(win, current->pos.y, current->pos.x, type_2[0]);
+            mvwaddstr(win, current->pos.y + 1, current->pos.x, type_2[1]);
+			mvwaddstr(win, current->pos.y + 2, current->pos.x, "      ");
+            current->wait_time--;
+        }
+    }
+    else if (current->class == 3)
+    {
+        if (current->wait_time == 0 && current->pos.x > max_x -20)
+        {
+            mvwaddstr(win, current->pos.y, current->pos.x--, type_3[0]);
+            mvwaddstr(win, current->pos.y + 1, current->pos.x, type_3[1]);
+			mvwaddstr(win, current->pos.y + 2, current->pos.x, "      ");
+            current->wait_time = 8;
+        }
+        else
+        {
+            mvwaddstr(win, current->pos.y, current->pos.x, type_3[0]);
+            mvwaddstr(win, current->pos.y + 1, current->pos.x, type_3[1]);
+			mvwaddstr(win, current->pos.y + 2, current->pos.x, "      ");
+            current->wait_time--;
+			if (current->wait_time < 0)
+			{
+				// current->wait_time = 5;
+				// shooting()
+			}
+        }
+    }
 }
 
 void	display_enemy(WINDOW *win, t_entity **enemy)
@@ -96,7 +111,7 @@ void	display_enemy(WINDOW *win, t_entity **enemy)
 	while (current)
 	{
 		display_type(win, current);
-		if (current->pos.x == 1)
+		if (current->pos.x <= 1)
 		{
 			pt = current;
 			if (prev)
