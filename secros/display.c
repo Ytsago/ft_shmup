@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:47:18 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 22:37:29 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 22:56:13 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	display_shoot(WINDOW *win, t_bullet **shoot)
 	while (bull)
 	{
 		mvwaddch(win, bull->pos.y, bull->pos.x++, 'o');
-		if (bull->pos.x == getmaxx(win) - 2)
+		if (bull->pos.x == getmaxx(win) - 2 || (bull->life <= 0))
 		{
 			pt = bull;
 			if (prev)
@@ -101,7 +101,7 @@ void	display_enemy(WINDOW *win, t_entity **enemy)
 	while (current)
 	{
 		display_type(win, current);
-		if (current->pos.x <= 1)
+		if (current->pos.x <= 1 || current->life <= 0)
 		{
 			pt = current;
 			if (prev)
@@ -123,6 +123,8 @@ void	display_player(WINDOW *win, t_data *data)
 {
 	int i = 0;
 	char *player[] = PLAYER_S;
+	if (data->player.life <= 0)
+		return ;
 	while (player[i])
 		mvwaddstr(win, data->player.pos.y - 1 + i, data->player.pos.x - 1, player[i++]);
 }
