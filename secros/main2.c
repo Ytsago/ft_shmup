@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 14:01:13 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 23:12:34 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 23:15:09 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,16 +121,22 @@ void	collisions(t_data *data)
 void	engine(t_data *data, WINDOW *win)
 {
 	int wait = 0;
+	int	exit;
+
 	while (1)
 	{
-		if(user_input(data))
-			break;
+		exit = user_input(data);
 		display_win(win, data);
 		napms(25);
 		first_wave(data, wait++);
 		collisions(data);
 		if (wait > 1000)
 			wait = 0;
+		if(exit)
+		{
+			ft_data_destroy(data);
+			break;
+		}
 	}
 }
 
