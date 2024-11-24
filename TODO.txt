@@ -1,2 +1,0 @@
-Function to close everything (that frees everything and endwin)
-
