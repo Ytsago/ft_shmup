@@ -6,13 +6,13 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:47:18 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 23:33:05 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 23:34:56 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_shmup.h"
 
-void	display_shoot(WINDOW *win, t_bullet **shoot)
+/* void	display_shoot(WINDOW *win, t_bullet **shoot)
 {
 	t_bullet *bull = *shoot;
 	t_bullet *prev = NULL;
@@ -40,6 +40,41 @@ void	display_shoot(WINDOW *win, t_bullet **shoot)
 			bull = bull->next;
 		}
 	}
+} */
+
+void    display_shoot(WINDOW *win, t_bullet **shoot)
+{
+    t_bullet *bull = *shoot;
+    t_bullet *prev = NULL;
+    void *pt;
+    char    ch[9] = "|/*~-~*\\";
+    int        it;
+
+    while (bull)
+    {
+        if (bull->origin)
+        {
+            it = bull->pos.x % 8;
+            mvwaddch(win, bull->pos.y, bull->pos.x++, ch[it]);
+        }
+        else
+            mvwaddch(win, bull->pos.y, bull->pos.x--, '<');
+        if ((bull->pos.x == getmaxx(win) - 2) || (bull->life <= 0) || (bull->pos.x <= 1))
+        {
+            pt = bull;
+            if (prev)
+                prev->next = bull->next;
+            else
+                *shoot = bull->next;
+            bull = NULL;
+            free(pt);
+        }
+        else
+        {
+            prev = bull;
+            bull = bull->next;
+        }
+    }
 }
 
 void	display_type(WINDOW *win, t_entity *current, t_data *data)
