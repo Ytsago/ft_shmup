@@ -6,7 +6,7 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 05:27:57 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/24 05:35:15 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 05:52:52 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef enum e_context
 	MENU,
 	GAME,
 	QUIT
-} t_context;
+}	t_context;
 
 typedef struct s_enginectx
 {
@@ -40,7 +40,7 @@ typedef struct s_enginectx
 	int			cols;
 	int			score;
 
-} t_enginectx;
+}	t_enginectx;
 
 extern t_enginectx	enginectx;
 

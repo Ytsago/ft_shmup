@@ -6,7 +6,7 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 03:05:17 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/24 05:25:46 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 06:03:28 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,6 @@ static void	draw_stat(void)
 	box(win, 0, 0);
 	printcenter(win, "hello i am a statistik");
 	wrefresh(win);
-
-	/*
-	WINDOW	*win;
-
-	destroy_win(gamedata.windows[MENU_WIN]);
-	win = create_newwin(LINES / 5, COLS, LINES - (LINES / 5), 0);
-	wclear(win);
-	box(win, 0, 0);
-	printcenter(win, "Press 'q' to quit.");
-	wrefresh(win);
-	gamedata.windows[MENU_WIN] = win;
-	*/
 }
 
 void	statloop(void)

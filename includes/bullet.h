@@ -6,7 +6,7 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 22:59:38 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/23 23:04:14 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 05:52:35 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ typedef enum e_shooter
 {
 	ENEMY,
 	PLAYER
-} t_shooter;
+}	t_shooter;
 
 typedef struct s_bullet
 {
 	t_vector	pos;
 	t_vector	velosity;
 	t_shooter	shooter;
-} t_bullet;
+}	t_bullet;
 
 #endif

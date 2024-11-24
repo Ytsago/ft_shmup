@@ -6,7 +6,7 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:44:18 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/24 05:47:16 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 06:02:55 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 t_enginectx	enginectx;
 
-int main(void)
+int	main(void)
 {
-    init_enginectx();
-    engineloop();
-    destroy_engine();
-    return 0;
+	init_enginectx();
+	engineloop();
+	destroy_engine();
+	return (0);
 }
-

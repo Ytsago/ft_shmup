@@ -6,16 +6,16 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 20:45:33 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/24 05:39:10 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 06:04:01 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shmup.h"
 
-void vector_set(t_vector *v, int x, int y)
+void	vector_set(t_vector *v, int x, int y)
 {
-    v->x = x;
-    v->y = y;
+	v->x = x;
+	v->y = y;
 }
 
 t_vector	new_vec(int x, int y)
