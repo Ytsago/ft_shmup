@@ -1,96 +1,41 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: secros <secros@student.42.fr>              +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/11/24 05:20:49 by jaubry--          #+#    #+#              #
-#    Updated: 2024/11/24 12:14:00 by secros           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+CFLAGS = -Wall -Wextra -Werror
+CC = cc
+AR = ar
+ARFLAG = -rcs
 
-NAME=		ft_shmup
+FILE = enemy.c display.c main.c ft_shmup_utils.c
 
-SRCSDIR=	srcs
-SRCS=		main.c \
-			engine.c \
-			window.c \
-			vector.c \
-			menu.c \
-			stat.c \
-			game.c \
-			entity.c
-			
-ifdef BONUS
-SRCS:=		$(SRCS) \
-			ft_lstnew_bonus.c
-endif
+INC = %.h
 
-OBJDIR=		.obj
+SRCS = $(FILE)
 
-OBJS=		$(addprefix $(OBJDIR)/, $(SRCS:srcs/%.c=%.o))
+BSRCS = $(SRCS) $(BONUSES)
 
-SRCS:=		$(addprefix $(SRCSDIR)/, $(SRCS))
+OBJDIR = .Obj
 
-LIBDIR=		libft
-LIBFT=		$(LIBDIR)/libft.a
+OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 
-INCDIR=		includes
+BOBJS = $(BSRCS:%.c=$(OBJDIR)/%.o)
 
-INCLUDES=	bullet.h \
-			entity.h \
-			game.h \
-			game_data.h \
-			vector.h \
-			engine.h \
-			shmup.h \
-			window.h
-
-INCLUDES:=	$(addprefix $(INCDIR)/, $(INCLUDES)) \
-			$(addprefix $(LIBDIR)/, libft.h)
-
-vpath %.h	$(INCDIR) $(LIBDIR)
-vpath %.c	$(SRCSDIR)
-vpath %.o	$(OBJDIR)
-
-MAKEFILE=	Makefile
-
-CC=			cc
-CFLAGS=		-Wall -Wextra -Werror
-INCFLAGS=	-I$(INCDIR) -I$(LIBDIR)
+NAME = ft_shmup
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT) | $(INCLUDES)
-	$(CC) $(CFLAGS) $(INCFLAGS) -lncurses $? -o $@ 
+$(NAME) : $(OBJS)
+	$(cc) $(CFLAG) $? -o $@
 
-$(LIBFT):
-	make bonus -C $(LIBDIR)
-
-bonus:
-	$(MAKE) BONUS=1 all
-
-$(OBJDIR)/%.o: %.c $(MAKEFILE) | $(OBJDIR)
-	$(CC) $(CFLAGS) $(INCFLAGS) -c $< -o $@
+$(OBJDIR)/%.o: %.c | $(OBJDIR)
+	$(CC) -c $(CFLAGS) -I $(INC) $< -o $@
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)
 
-hclean:
-	rm -rf $(addsuffix .gch, $(INCLUDES))
-
-clean: hclean
+clean:
 	rm -rf $(OBJDIR)
-	@make -C $(LIBDIR) clean
 
 fclean: clean
-	rm -f $(NAME)
-	@make -C $(LIBDIR) fclean
+	rm -f $(NAME) $(LIB)
 
 re: fclean all
-	@make -C $(LIBDIR) re
 
-
-.PHONY: all clean fclean re hclean
-
+.PHONY: clean fclean re all bonus
