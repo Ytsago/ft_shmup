@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/11/24 05:20:49 by jaubry--          #+#    #+#              #
+#    Updated: 2024/11/24 05:37:32 by jaubry--         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME=		ft_shmup
 
 SRCSDIR=	srcs
@@ -7,7 +19,8 @@ SRCS=		main.c \
 			vector.c \
 			menu.c \
 			stat.c \
-			game.c
+			game.c \
+			entity.c
 ifdef BONUS
 SRCS:=		$(SRCS) \
 			ft_lstnew_bonus.c
@@ -28,7 +41,10 @@ INCLUDES=	bullet.h \
 			entity.h \
 			game.h \
 			game_data.h \
-			vector.h
+			vector.h \
+			engine.h \
+			shmup.h \
+			window.h
 
 INCLUDES:=	$(addprefix $(INCDIR)/, $(INCLUDES)) \
 			$(addprefix $(LIBDIR)/, libft.h)

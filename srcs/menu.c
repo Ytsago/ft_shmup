@@ -6,17 +6,17 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 03:05:17 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/24 04:35:17 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 05:39:51 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "shmup.h"
 
 void	resize_menu(void)
 {
 	WINDOW	*win;
 
-	win = gamedata.windows[MENU_WIN];
+	win = enginectx.windows[MENU_WIN];
 	wresize(win, LINES / 5, COLS);
 	mvwin(win, (LINES - (LINES / 5)), 0);
 }
@@ -25,7 +25,7 @@ static void	draw_menu(void)
 {
 	WINDOW	*win;
 
-	win = gamedata.windows[MENU_WIN];
+	win = enginectx.windows[MENU_WIN];
 	wclear(win);
 	box(win, 0, 0);
 	printcenter(win, "Press 'q' to quit.");
@@ -50,9 +50,9 @@ static void	handle_menu_input(void)
 
 	ch = getch();
 	if (ch == 'd')
-		gamedata.context = GAME;
+		enginectx.context = GAME;
 	if (ch == 'q')
-		gamedata.context = QUIT;
+		enginectx.context = QUIT;
 }
 
 void	menuloop(void)

@@ -6,11 +6,11 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:34:21 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/24 04:28:58 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 05:26:04 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "shmup.h"
 
 void printcenter(WINDOW *win, char *str)
 {
@@ -52,7 +52,7 @@ bool check_terminal_size(void)
 {
 	WINDOW	*alert;
 
-	alert = gamedata.windows[ALERT_WIN];
+	alert = enginectx.windows[ALERT_WIN];
 	wclear(alert);
     if (LINES < MIN_LINES || COLS < MIN_COLS)
     {
@@ -76,13 +76,12 @@ void	resize_windows(void)
 	Function that checks if the lines or cols has changed.
 	Calls on 
 */
-#include <stdio.h>
 bool	check_for_resize(void)
 {
-	if ((gamedata.lines != LINES) || (gamedata.cols != COLS))
+	if ((enginectx.lines != LINES) || (enginectx.cols != COLS))
 	{
-		gamedata.lines = LINES;
-		gamedata.cols = COLS;
+		enginectx.lines = LINES;
+		enginectx.cols = COLS;
 		resize_windows();
 	}
 	return (check_terminal_size());

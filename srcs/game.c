@@ -6,17 +6,22 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 03:05:17 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/24 04:19:58 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 05:25:23 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "shmup.h"
+
+void	init_game(void)
+{
+
+}
 
 void	resize_game(void)
 {
 	WINDOW	*win;
 
-	win = gamedata.windows[GAME_WIN];
+	win = enginectx.windows[GAME_WIN];
 	wresize(win, LINES - (LINES / 5), COLS);
 	mvwin(win, 0, 0);
 }
@@ -25,7 +30,7 @@ static void	draw_game(void)
 {
 	WINDOW	*win;
 
-	win = gamedata.windows[GAME_WIN];
+	win = enginectx.windows[GAME_WIN];
 	wclear(win);
 	box(win, 0, 0);
 	printcenter(win, "i do be gamin'");
@@ -50,7 +55,7 @@ static void	handle_game_input(void)
 
 	ch = getch();
 	if (ch == 'q')
-		gamedata.context = QUIT;
+		enginectx.context = QUIT;
 }
 
 void	gameloop(void)

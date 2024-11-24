@@ -6,7 +6,7 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 22:52:18 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/23 22:59:20 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 05:13:24 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_entity
     t_vector pos;
     t_type type;
 	bool alive;
-    void *class;
+    void *entity;
 } t_entity;
 
 //void init_entity(t_entity *entity, int x, int y, t_entity_type type, bool alive);

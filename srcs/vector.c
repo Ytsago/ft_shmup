@@ -6,11 +6,11 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 20:45:33 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/24 02:59:20 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 05:39:10 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
+#include "shmup.h"
 
 void vector_set(t_vector *v, int x, int y)
 {

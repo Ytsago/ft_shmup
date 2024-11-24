@@ -6,17 +6,17 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 03:05:17 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/24 04:19:30 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 05:25:46 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "shmup.h"
 
 void	resize_stat(void)
 {
 	WINDOW	*win;
 
-	win = gamedata.windows[STAT_WIN];
+	win = enginectx.windows[STAT_WIN];
 	wresize(win, LINES / 5, COLS);
 	mvwin(win, (LINES - (LINES / 5)), 0);
 }
@@ -25,7 +25,7 @@ static void	draw_stat(void)
 {
 	WINDOW	*win;
 
-	win = gamedata.windows[STAT_WIN];
+	win = enginectx.windows[STAT_WIN];
 	wclear(win);
 	box(win, 0, 0);
 	printcenter(win, "hello i am a statistik");

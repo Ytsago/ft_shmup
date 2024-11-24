@@ -6,17 +6,17 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:44:18 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/24 01:47:28 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 05:47:16 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "shmup.h"
 
-t_gamedata	gamedata;
+t_enginectx	enginectx;
 
 int main(void)
 {
-    init_engine();
+    init_enginectx();
     engineloop();
     destroy_engine();
     return 0;
