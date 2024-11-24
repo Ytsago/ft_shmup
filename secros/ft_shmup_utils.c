@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:51:10 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 15:47:01 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 17:31:55 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,18 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-void	lstadd_front(t_pos **shoot, t_pos *new_bull)
+void	lstadd_front_enti(t_entity **enemy, t_entity *new_en)
+{
+	if (!*enemy)
+		*enemy = new_en;
+	else
+	{
+		new_en->next = *enemy;
+		*enemy = new_en;
+	}
+}
+
+void	lstadd_front(t_bullet **shoot, t_bullet *new_bull)
 {
 	if (!shoot)
 		*shoot = new_bull;

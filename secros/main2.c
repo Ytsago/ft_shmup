@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 14:01:13 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 16:20:17 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 17:25:57 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	shooting(t_data *data, int me)
 {
-	t_pos *bullet = malloc(sizeof(t_pos));
+	t_bullet *bullet = malloc(sizeof(t_bullet));
 	static int flipflop = -1;
 	if (!bullet)
 		return;
 	if (me)
 	{
-		bullet->x = data->player.x + 5;
-		bullet->y = data->player.y + flipflop;
+		bullet->pos.x = data->player.pos.x + 5;
+		bullet->pos.y = data->player.pos.y + flipflop;
 		lstadd_front(&data->shoot, bullet);
 		flipflop *= -1;
 	}
@@ -31,14 +31,14 @@ int	user_input(t_data *data)
 {
 	int	input;
 	input = getch();
-	if (input == 'w' && data->player.y > 3)
-		data->player.y--;
-	if (input == 's'&& data->player.y < data->window.sizey - 3)
-		data->player.y++;
-	if (input == 'd'&& data->player.x < 20)
-		data->player.x++;
-	if (input == 'a'&& data->player.x > 2)
-		data->player.x--;
+	if (input == 'w' && data->player.pos.y > 4)
+		data->player.pos.y--;
+	if (input == 's'&& data->player.pos.y < data->window.sizey - 4)
+		data->player.pos.y++;
+	if (input == 'd'&& data->player.pos.x < 20)
+		data->player.pos.x++;
+	if (input == 'a'&& data->player.pos.x > 2)
+		data->player.pos.x--;
 	if (input == ' ')
 		shooting(data, 1);
 	if (input == 27)
@@ -54,6 +54,8 @@ void	engine(t_data *data, WINDOW *win)
 			break;
 		display_win(win, data);
 		napms(25);
+		if (data->enemy = NULL)
+			enemy_spawner(data);
 	}
 }
 
@@ -64,17 +66,17 @@ void	data_init(WINDOW **win, t_data *data)
 	noecho();
 	curs_set(FALSE);
 	keypad(stdscr, true);
-	timeout(1);
+	timeout(25);
 
 	*win = newwin(40, 100, 5, 10);
 
-	data->player.x = 5;
-	data->player.y = 10;
-	data->player.next = NULL;
+	data->player.pos.x = 5;
+	data->player.pos.y = 10;
 
 	data->window.sizex = getmaxx(*win);
 	data->window.sizey = getmaxy(*win);
 
+	data->enemy =NULL;
 	data->score = 0;
 	data->back_off = 0;
 	data->shoot = NULL;

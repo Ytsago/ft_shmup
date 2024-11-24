@@ -6,22 +6,22 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:47:18 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 16:21:13 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 18:20:12 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_shmup.h"
 
-void	display_shoot(WINDOW *win, t_pos **shoot)
+void	display_shoot(WINDOW *win, t_bullet **shoot)
 {
-	t_pos *bull = *shoot;
-	t_pos *prev = NULL;
+	t_bullet *bull = *shoot;
+	t_bullet *prev = NULL;
 	void *pt;
 
 	while (bull)
 	{
-		mvwaddch(win, bull->y, bull->x++, 'o');
-		if (bull->x == getmaxx(win) - 2)
+		mvwaddch(win, bull->pos.y, bull->pos.x++, 'o');
+		if (bull->pos.x == getmaxx(win) - 2)
 		{
 			pt = bull;
 			if (prev)
@@ -42,9 +42,9 @@ void	display_shoot(WINDOW *win, t_pos **shoot)
 void	display_player(WINDOW *win, t_data *data)
 {
 	int i = 0;
-	char *player[] = PLAYER_S;
-	while (player[i][0])
-		mvwaddstr(win, data->player.y - 1 + i, data->player.x - 1, player[i++]);
+	char *player[] = ENEMY_1;
+	while (player[i])
+		mvwaddstr(win, data->player.pos.y - 1 + i, data->player.pos.x - 1, player[i++]);
 }
 
 void	display_background(WINDOW *win, t_data *data)
