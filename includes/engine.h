@@ -6,7 +6,7 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 05:27:57 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/24 05:52:52 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 06:50:09 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define MIN_COLS 80
 
 # include <ncurses.h>
-
+# include "game.h"
 # define MENU_WIN 0
 # define GAME_WIN 1
 # define STAT_WIN 2
@@ -39,7 +39,7 @@ typedef struct s_enginectx
 	int			lines;
 	int			cols;
 	int			score;
-
+	t_gamedata	game;
 }	t_enginectx;
 
 extern t_enginectx	enginectx;

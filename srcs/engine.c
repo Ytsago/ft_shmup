@@ -6,7 +6,7 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:35:51 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/24 06:02:13 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 07:10:34 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init_enginectx(void)
 	cbreak();
 	noecho();
 	curs_set(false);
-	timeout(0);
+	timeout(1);
 	nodelay(stdscr, true);
 	keypad(stdscr, true);
 	enginectx.windows[MENU_WIN] = create_newwin(LINES / 5, COLS, LINES - LINES / 5, 0);
@@ -40,6 +40,8 @@ void	engineloop(void)
 				menuloop();
 			if (enginectx.context == GAME)
 			{
+				if (!enginectx.game.lines)
+					init_game();
 				gameloop();
 				statloop();
 			}
