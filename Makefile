@@ -6,7 +6,7 @@
 #    By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/24 05:20:49 by jaubry--          #+#    #+#              #
-#    Updated: 2024/11/24 05:37:32 by jaubry--         ###   ########.fr        #
+#    Updated: 2024/11/24 09:22:53 by jaubry--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ SRCS=		main.c \
 			vector.c \
 			menu.c \
 			stat.c \
-			game.c \
-			entity.c
+			game.c
+#entity.c
 ifdef BONUS
 SRCS:=		$(SRCS) \
 			ft_lstnew_bonus.c

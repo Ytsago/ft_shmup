@@ -6,7 +6,7 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 05:26:16 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/24 07:05:03 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 07:31:20 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,5 @@
 # define ESC_KEY 127
 
 void	init_game(void);
-
-typedef struct s_gamedata
-{
-	int	scroller;
-	int	lines;
-	int	cols;
-}	t_gamedata;
 
 #endif

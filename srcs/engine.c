@@ -6,7 +6,7 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:35:51 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/24 07:10:34 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 09:26:45 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ void	engineloop(void)
 				menuloop();
 			if (enginectx.context == GAME)
 			{
-				if (!enginectx.game.lines)
-					init_game();
 				gameloop();
 				statloop();
 			}

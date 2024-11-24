@@ -6,7 +6,7 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 05:27:57 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/24 06:50:09 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 09:16:29 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # include <ncurses.h>
 # include "game.h"
+# include "game_data.h"
 # define MENU_WIN 0
 # define GAME_WIN 1
 # define STAT_WIN 2
@@ -29,7 +30,8 @@ typedef enum e_context
 {
 	MENU,
 	GAME,
-	QUIT
+	QUIT,
+	ALERT
 }	t_context;
 
 typedef struct s_enginectx
@@ -38,7 +40,6 @@ typedef struct s_enginectx
 	t_context	context;
 	int			lines;
 	int			cols;
-	int			score;
 	t_gamedata	game;
 }	t_enginectx;
 
