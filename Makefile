@@ -1,4 +1,4 @@
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -lncurses
 CC = cc
 AR = ar
 ARFLAG = -rcs
@@ -22,10 +22,10 @@ NAME = ft_shmup
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	$(cc) $(CFLAG) $? -o $@
+	$(cc) $(CFLAG) $< -o $@
 
 $(OBJDIR)/%.o: %.c | $(OBJDIR)
-	$(CC) -c $(CFLAGS) -I $(INC) $< -o $@
+	$(CC) -c $(CFLAGS) -I $(INC) $? -o $@
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)
