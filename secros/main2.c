@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 14:01:13 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 20:38:39 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 22:35:57 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	shooting(t_data *data, int me)
 	{
 		bullet->pos.x = data->player.pos.x + 5;
 		bullet->pos.y = data->player.pos.y + flipflop;
+		bullet->origin = me;
+		bullet->life = 1;
 		lstadd_front(&data->shoot, bullet);
 		flipflop *= -1;
 	}
@@ -46,6 +48,68 @@ int	user_input(t_data *data)
 	return (0);
 }		
 
+static void	check_player_collisions(t_data *data)
+{
+	t_bullet	*bullets;
+	t_entity	*enemies;
+	t_entity	player;
+
+	bullets = data->shoot;
+	enemies = data->enemy;
+	player = data->player;
+	while (bullets)
+	{
+		if ((player.pos.x == bullets->pos.x)
+				&& (player.pos.y == bullets->pos.y)
+				&& (bullets->origin == 0))
+		{
+			player.life--;
+			bullets->life = -1;
+			break;
+		}
+		bullets = bullets->next;
+	}
+	while (enemies)
+	{
+		if ((player.pos.x == enemies->pos.x)
+				&& (player.pos.y == enemies->pos.y))
+		{
+			player.life--;
+			enemies->life = -1;
+			break;
+		}
+	}
+}
+
+static void	check_enemy_collisions(t_data *data)
+{
+	t_bullet	*bullets;
+	t_entity	*enemies;
+
+	bullets = data->shoot;
+	while (bullets)
+	{
+		enemies = data->enemy;
+		while (enemies)
+		{
+			if ((bullets->pos.x == enemies->pos.x)
+					&& (bullets->pos.y == enemies->pos.y))
+			{
+				enemies->life--;
+				bullets->life = -1;
+			}
+			enemies = enemies->next;
+		}
+		bullets = bullets->next;
+	}
+}
+
+void	collisions(t_data *data)
+{
+	check_player_collisions(data);
+	check_enemy_collisions(data);
+}
+
 void	engine(t_data *data, WINDOW *win)
 {
 	int wait = 0;
@@ -56,6 +120,7 @@ void	engine(t_data *data, WINDOW *win)
 		display_win(win, data);
 		napms(25);
 		first_wave(data, wait++);
+		collisions(data);
 		if (wait > 500)
 			wait = 0;
 	}
