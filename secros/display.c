@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:47:18 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 20:07:34 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 20:08:08 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,25 +59,25 @@ void	display_type(WINDOW *win, t_entity *current)
 	if (current->wait_time == 0 && current->class == 2)
 	{
 		while(type_2[i])
-		mvwaddstr(win, current->pos.y + i, current->pos.x--, type_2[i++]);
+		mvwaddstr(win, current->pos.y +i, current->pos.x--, type_2[i++]);
 		current->wait_time = 10;
 	}
 	else if (current->class == 2)
 	{
 		while(type_2[i])
-		mvwaddstr(win, current->pos.y, current->pos.x, type_2[i]);
+		mvwaddstr(win, current->pos.y +i, current->pos.x, type_2[i]);
 		current->wait_time--;
 	}
 	if (current->wait_time == 0 && current->class == 3)
 	{
 		while(type_3[i])
-		mvwaddstr(win, current->pos.y, current->pos.x--, type_3[i]);
+		mvwaddstr(win, current->pos.y +i, current->pos.x--, type_3[i]);
 		current->wait_time = 8;
 	}
 	else if (current->class == 3)
 	{
 		while(type_3[i])
-		mvwaddstr(win, current->pos.y, current->pos.x, type_3[i]);
+		mvwaddstr(win, current->pos.y +i, current->pos.x, type_3[i]);
 		current->wait_time--;
 	}
 }
