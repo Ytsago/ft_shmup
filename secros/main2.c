@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 14:01:13 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 22:35:57 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 22:43:16 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ static void	check_player_collisions(t_data *data)
 			enemies->life = -1;
 			break;
 		}
+		enemies = enemies->next;
 	}
 }
 
