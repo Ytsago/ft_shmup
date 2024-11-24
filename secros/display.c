@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:47:18 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 23:22:30 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 23:33:05 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,9 +157,11 @@ void	display_background(WINDOW *win, t_data *data)
 
 void	display_win(WINDOW *win, t_data *data)
 {
+	static int i = 0;
+	i++;
 	werase(win);
 	box(win, 0, 0);
-	mvwprintw(win, 1, 1, "Score %d", data->score);
+	mvwprintw(win, 1, 1, "Score : %d         Life : %d          time : %d", data->score, data->player.life, i/40);
 	display_background(win, data);
 	display_player(win, data);
 	display_enemy(win, &data->enemy, data);

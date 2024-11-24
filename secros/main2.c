@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 14:01:13 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 23:15:09 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 23:28:43 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ void	engine(t_data *data, WINDOW *win)
 		collisions(data);
 		if (wait > 1000)
 			wait = 0;
-		if(exit)
+		if(exit || data->player.life <= 0)
 		{
 			ft_data_destroy(data);
 			break;
