@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 14:01:13 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 22:59:39 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 23:00:57 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ void	data_init(WINDOW **win, t_data *data)
 
 	data->player.pos.x = 5;
 	data->player.pos.y = data->window.sizey / 2;
-
+	data->player.life = 5;
 
 
 	data->enemy =NULL;
