@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 14:01:13 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 23:00:57 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 23:07:41 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	shooting(t_pos pos, int me, t_data *data)
 	}
 	else
 	{
-		bullet->pos.x = pos.x + 5;
+		bullet->pos.x = pos.x -2;
 		bullet->pos.y = pos.y;
 		bullet->origin = 0;
 		bullet->life = 1;
-		lstadd_front(&data->shoot, bullet);
 	}
+		lstadd_front(&data->shoot, bullet);
 }
 
 int	user_input(t_data *data)
@@ -49,7 +49,7 @@ int	user_input(t_data *data)
 	if (input == 'a'&& data->player.pos.x > 2)
 		data->player.pos.x--;
 	if (input == ' ')
-		shooting(data, 1);
+		shooting(data->player.pos, 1, data);
 	if (input == 27)
 		return (1);
 	return (0);

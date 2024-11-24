@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:47:18 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 23:00:38 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 23:07:00 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ void	display_shoot(WINDOW *win, t_bullet **shoot)
 
 	while (bull)
 	{
-		mvwaddch(win, bull->pos.y, bull->pos.x++, 'o');
-		if (bull->pos.x == getmaxx(win) - 2 || (bull->life <= 0))
+		if (bull->origin)
+			mvwaddch(win, bull->pos.y, bull->pos.x++, 'o');
+		else
+			mvwaddch(win, bull->pos.y, bull->pos.x--, 'o');
+		if (bull->pos.x == getmaxx(win) - 2 || (bull->life <= 0) || bull->pos.x <= 1)
 		{
 			pt = bull;
 			if (prev)
@@ -39,7 +42,7 @@ void	display_shoot(WINDOW *win, t_bullet **shoot)
 	}
 }
 
-void	display_type(WINDOW *win, t_entity *current)
+void	display_type(WINDOW *win, t_entity *current, t_data *data)
 {
 	int max_x = getmaxx(win);
 
@@ -86,13 +89,13 @@ void	display_type(WINDOW *win, t_entity *current)
 			if (current->wait_time < 0)
 			{
 				current->wait_time = 15;
-				shooting()
+				shooting(current->pos, 0, data);
 			}
         }
     }
 }
 
-void	display_enemy(WINDOW *win, t_entity **enemy)
+void	display_enemy(WINDOW *win, t_entity **enemy, t_data *data)
 {
 	t_entity *current = *enemy;
 	t_entity *prev = NULL;
@@ -100,7 +103,7 @@ void	display_enemy(WINDOW *win, t_entity **enemy)
 
 	while (current)
 	{
-		display_type(win, current);
+		display_type(win, current, data);
 		if (current->pos.x <= 1 || current->life <= 0)
 		{
 			pt = current;
@@ -155,7 +158,7 @@ void	display_win(WINDOW *win, t_data *data)
 	mvwprintw(win, 1, 1, "Score %d", data->score);
 	display_background(win, data);
 	display_player(win, data);
-	display_enemy(win, &data->enemy);
+	display_enemy(win, &data->enemy, data);
 	display_shoot(win, &data->shoot);
 	wrefresh(win);
 }
