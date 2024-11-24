@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 17:10:28 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 20:11:44 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 22:34:35 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void	*first_wave(t_data *data, int wait)
 	wait++;
 	while (i < 2 && wait == 100)
 	{
-		lstadd_front_enti(&data->enemy, enemy_spawner(11 + i, data->window.sizex - 2, 3));
-		lstadd_front_enti(&data->enemy, enemy_spawner(31 + i, data->window.sizex - 2, 3));
+		lstadd_front_enti(&data->enemy, enemy_spawner(16 + i, data->window.sizex - 2, 3));
+		lstadd_front_enti(&data->enemy, enemy_spawner(26 + i, data->window.sizex - 2, 3));
 		i++;
 	}
 	while (i < 2 && wait == 130)

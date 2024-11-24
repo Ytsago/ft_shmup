@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:47:29 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 20:51:39 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 22:29:01 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 #include <ncurses.h>
 
 # define PLAYER_S {"  -=:|\\", "-=:{[@]}=>", "  -=:|/", NULL}
-# define ENEMY_1 "<o>"
+# define ENEMY_1 "(e)-"
+# define ENEMY_2 "[}-e]:"
+# define ENEMY_3 "-<{e]"
 # define BACK "*      .      +       "
 
 typedef struct s_pos
@@ -64,6 +66,7 @@ void	display_win(WINDOW *win, t_data *data);
 void	lstadd_front(t_bullet **shoot, t_bullet *new_bull);
 void	*first_wave(t_data *data, int wait);
 void	lstadd_front_enti(t_entity **enemy, t_entity *new_en);
+void	ft_data_destroy(t_data *lst);
 void	display_enemy(WINDOW *win, t_entity **enemy);
 void	shooting(t_data *data, int me);
 

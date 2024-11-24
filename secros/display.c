@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:47:18 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 20:52:52 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 22:30:34 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ void	display_shoot(WINDOW *win, t_bullet **shoot)
 
 void	display_type(WINDOW *win, t_entity *current)
 {
-	const char	*type_2[] = {"/|:", "\\|:", NULL};
-	const char	*type_3[] = {"<|\\-", "<|/-", NULL};
 	int max_x = getmaxx(win);
 
 	int	i;
@@ -65,16 +63,12 @@ void	display_type(WINDOW *win, t_entity *current)
     {
         if (current->wait_time == 0)
         {
-            mvwaddstr(win, current->pos.y, current->pos.x--, type_2[0]);
-            mvwaddstr(win, current->pos.y + 1, current->pos.x, type_2[1]);
-			mvwaddstr(win, current->pos.y + 2, current->pos.x, "      ");
+            mvwaddstr(win, current->pos.y, current->pos.x--, ENEMY_2);
             current->wait_time = 12;
         }
         else
         {
-            mvwaddstr(win, current->pos.y, current->pos.x, type_2[0]);
-            mvwaddstr(win, current->pos.y + 1, current->pos.x, type_2[1]);
-			mvwaddstr(win, current->pos.y + 2, current->pos.x, "      ");
+            mvwaddstr(win, current->pos.y, current->pos.x, ENEMY_2);
             current->wait_time--;
         }
     }
@@ -82,16 +76,12 @@ void	display_type(WINDOW *win, t_entity *current)
     {
         if (current->wait_time == 0 && current->pos.x > max_x -20)
         {
-            mvwaddstr(win, current->pos.y, current->pos.x--, type_3[0]);
-            mvwaddstr(win, current->pos.y + 1, current->pos.x, type_3[1]);
-			mvwaddstr(win, current->pos.y + 2, current->pos.x, "      ");
+            mvwaddstr(win, current->pos.y, current->pos.x--, ENEMY_3);
             current->wait_time = 8;
         }
         else
         {
-            mvwaddstr(win, current->pos.y, current->pos.x, type_3[0]);
-            mvwaddstr(win, current->pos.y + 1, current->pos.x, type_3[1]);
-			mvwaddstr(win, current->pos.y + 2, current->pos.x, "      ");
+            mvwaddstr(win, current->pos.y, current->pos.x, ENEMY_3);
             current->wait_time--;
 			if (current->wait_time < 0)
 			{
@@ -143,7 +133,6 @@ void	display_background(WINDOW *win, t_data *data)
 	static int back_size = 0;
 	const char back[] = BACK;
 	int x = 1;
-	int line;
 
 	if (!back_size)
 		back_size = ft_strlen(BACK);

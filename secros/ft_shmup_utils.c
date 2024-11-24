@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:51:10 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 21:08:15 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 22:33:41 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,34 @@ void	lstadd_front(t_bullet **shoot, t_bullet *new_bull)
 	}
 }
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_entity_destroy(t_entity *enemy)
 {
-	t_list	*tmp;
+	t_entity	*tmp = enemy;
 
-	if (lst && del)
+	while (tmp)
 	{
-		while (*lst)
-		{
-			tmp = (*lst)->next;
-			ft_lstdelone(*lst, del);
-			*lst = tmp;
-		}
-		*lst = NULL;
+		tmp = tmp->next;
+		free(enemy);
+		enemy = tmp;
 	}
+}
+
+void	ft_bullet_destroy(t_bullet *shoot)
+{
+		t_bullet	*tmp = shoot;
+
+	while (tmp)
+	{
+		tmp = tmp->next;
+		free(shoot);
+		shoot = tmp;
+	}
+}
+
+void	ft_data_destroy(t_data *lst)
+{
+	if (lst->enemy)
+		ft_entity_destroy(lst->enemy);
+	if (lst->shoot)
+		ft_bullet_destroy(lst->shoot);
 }
