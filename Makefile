@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: secros <secros@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/24 05:20:49 by jaubry--          #+#    #+#              #
-#    Updated: 2024/11/24 09:22:53 by jaubry--         ###   ########.fr        #
+#    Updated: 2024/11/24 12:14:00 by secros           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,9 @@ SRCS=		main.c \
 			vector.c \
 			menu.c \
 			stat.c \
-			game.c
-#entity.c
+			game.c \
+			entity.c
+			
 ifdef BONUS
 SRCS:=		$(SRCS) \
 			ft_lstnew_bonus.c
@@ -62,10 +63,10 @@ INCFLAGS=	-I$(INCDIR) -I$(LIBDIR)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) | $(INCLUDES)
-	$(CC) $(CFLAGS) $(INCFLAGS) -lncurses $^ -o $@ 
+	$(CC) $(CFLAGS) $(INCFLAGS) -lncurses $? -o $@ 
 
 $(LIBFT):
-	make -C $(LIBDIR)
+	make bonus -C $(LIBDIR)
 
 bonus:
 	$(MAKE) BONUS=1 all

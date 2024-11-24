@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   engine.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 05:27:57 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/24 09:16:29 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 10:39:25 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define ENGINE_H
 # define MIN_LINES 40
 # define MIN_COLS 80
+# define ENGINE_SPEED 25
 
 # include <ncurses.h>
 # include "game.h"

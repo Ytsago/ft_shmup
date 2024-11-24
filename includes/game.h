@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 05:26:16 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/24 07:31:20 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 12:06:28 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 # define SCROLL_LEN 22
 # define ESC_KEY 127
 
-void	init_game(void);
+void	*init_game(void);
 
 #endif

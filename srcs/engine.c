@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   engine.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:35:51 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/24 09:26:45 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 11:41:41 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	engineloop(void)
 				menuloop();
 			if (enginectx.context == GAME)
 			{
+				
 				gameloop();
 				statloop();
 			}
@@ -49,7 +50,7 @@ void	engineloop(void)
 		ch = getch();
 		if (ch == 'a' || ch == ESC_KEY)
 			return ;
-		napms(100);
+		napms(ENGINE_SPEED);
 	}
 }
 

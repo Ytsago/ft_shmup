@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   entity.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 05:20:39 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/24 09:22:37 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/24 12:09:58 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,11 @@ void	add_bullet(t_vec pos, t_vec vel, t_type shooter)
 	add_entity(entity);
 }
 
-void	add_player(t_vec pos)
+void	add_player(t_vec pos, t_entity **play1)
 {
-	t_entity	entity;
 	t_player	player = {1000};
-	entity = new_entity(pos, PLAYER, ">", (void *)&player);
-	add_entity(entity);
+	**play1 = new_entity(pos, PLAYER, ">", (void *)&player);
+//	add_entity(entity);
 }
 
 bool	is_alive(t_entity *entity)
