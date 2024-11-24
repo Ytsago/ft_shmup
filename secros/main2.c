@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 14:01:13 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 18:51:40 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 18:54:46 by secros           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	data_init(WINDOW **win, t_data *data)
 	noecho();
 	curs_set(FALSE);
 	keypad(stdscr, true);
-	timeout(25);
+	timeout(1);
 
 	*win = newwin(40, 100, 5, 10);
 
