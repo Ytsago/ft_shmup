@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:47:29 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 20:51:39 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 22:30:28 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct 		s_bullet
 {
 	int				origin;
 	t_pos			pos;
+	int				life;
 	struct s_bullet *next;
 }					t_bullet;
 

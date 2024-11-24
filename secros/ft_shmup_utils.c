@@ -6,7 +6,7 @@
 /*   By: secros <secros@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:51:10 by secros            #+#    #+#             */
-/*   Updated: 2024/11/24 21:08:15 by secros           ###   ########.fr       */
+/*   Updated: 2024/11/24 21:35:16 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	lstadd_front(t_bullet **shoot, t_bullet *new_bull)
 	}
 }
 
+/*
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*tmp;
@@ -57,3 +58,4 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		*lst = NULL;
 	}
 }
+*/
