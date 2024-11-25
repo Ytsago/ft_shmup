@@ -5,17 +5,17 @@ ARFLAG = -rcs
 
 FILE = enemy.c display.c main.c ft_shmup_utils.c
 
-INC = %.h
+INC = ft_shmup.h
 
 SRCS = $(FILE)
 
 BSRCS = $(SRCS) $(BONUSES)
 
-OBJDIR = .Obj
+OBJDIR = .Obj/
 
-OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
+OBJS = $(SRCS:%.c=$(OBJDIR)%.o)
 
-BOBJS = $(BSRCS:%.c=$(OBJDIR)/%.o)
+BOBJS = $(BSRCS:%.c=$(OBJDIR)%.o)
 
 NAME = ft_shmup
 
@@ -24,8 +24,8 @@ all: $(NAME)
 $(NAME) : $(OBJS)
 	$(cc) $(CFLAG) $< -o $@
 
-$(OBJDIR)/%.o: %.c | $(OBJDIR)
-	$(CC) -c $(CFLAGS) -I $(INC) $? -o $@
+$(OBJDIR)%.o: %.c | $(OBJDIR)
+	$(CC) -c $(CFLAGS) -I. $? -o $@
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)

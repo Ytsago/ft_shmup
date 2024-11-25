@@ -81,9 +81,6 @@ void	display_type(WINDOW *win, t_entity *current, t_data *data)
 {
 	int max_x = getmaxx(win);
 
-	int	i;
-
-	i = 0;
 	if (current->class == 1)
     {
         if (current->wait_time == 0)
@@ -193,10 +190,16 @@ void	display_background(WINDOW *win, t_data *data)
 void	display_win(WINDOW *win, t_data *data)
 {
 	static int i = 0;
+	static int i2 = 0;
 	i++;
+	if (i / (40 * 60))
+	{
+		i = 0;
+		i2++;
+	}
 	werase(win);
 	box(win, 0, 0);
-	mvwprintw(win, 1, 1, "Score : %d         Life : %d          time : %d", data->score, data->player.life, i/40);
+	mvwprintw(win, 1, 1, "Score : %d         Life : %d          time : %02d:%02d", data->score, data->player.life, i2, i/40);
 	display_background(win, data);
 	display_player(win, data);
 	display_enemy(win, &data->enemy, data);

@@ -59,18 +59,16 @@ static void	check_player_collisions(t_data *data)
 {
 	t_bullet	*bullets;
 	t_entity	*enemies;
-	t_entity	player;
 
 	bullets = data->shoot;
 	enemies = data->enemy;
-	player = data->player;
 	while (bullets)
 	{
-		if ((player.pos.x == bullets->pos.x)
-				&& (player.pos.y == bullets->pos.y)
+		if ((data->player.pos.x == bullets->pos.x)
+				&& (data->player.pos.y == bullets->pos.y)
 				&& (bullets->origin == 0))
 		{
-			player.life--;
+			data->player.life--;
 			bullets->life = -1;
 			break;
 		}
@@ -78,10 +76,10 @@ static void	check_player_collisions(t_data *data)
 	}
 	while (enemies)
 	{
-		if ((player.pos.x == enemies->pos.x)
-				&& (player.pos.y == enemies->pos.y))
+		if ((data->player.pos.x == enemies->pos.x)
+				&& (data->player.pos.y == enemies->pos.y))
 		{
-			player.life--;
+			data->player.life--;
 			enemies->life = -1;
 			break;
 		}
