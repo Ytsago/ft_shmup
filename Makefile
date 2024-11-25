@@ -25,7 +25,7 @@ $(NAME) : $(OBJS)
 	$(cc) $(CFLAG) $< -o $@
 
 $(OBJDIR)%.o: %.c | $(OBJDIR)
-	$(CC) -c $(CFLAGS) -I. $? -o $@
+	$(CC) -c $(CFLAGS) -I. $< -o $@
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)

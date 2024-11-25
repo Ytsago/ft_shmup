@@ -1,8 +1,0 @@
-{
-	"files.associations": {
-		"limits": "cpp",
-		"*.tcc": "cpp",
-		"compare": "cpp",
-		"ft_shmup.h": "c"
-	}
-}
